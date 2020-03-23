@@ -1,0 +1,12 @@
+---
+root: true
+plugins:
+  - node
+extends:
+  - eslint:recommended
+  - plugin:node/recommended
+  - plugin:prettier/recommended
+rules:
+  no-unused-vars:
+    - "error"
+    - { argsIgnorePattern: "^_" }

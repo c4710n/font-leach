@@ -1,0 +1,53 @@
+{
+  "name": "font-leach",
+  "description": "Minify fonts by scanning source code.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "repository": "font-leach",
+  "bin": "bin/cli.js",
+  "main": "lib/index.js",
+  "engines": {
+    "node": ">=8"
+  },
+  "scripts": {
+    "lint": "eslint 'index.js' 'bin/**/*.js'",
+    "test-alphanumeric": "bin/cli.js test/WenQuanYi\\ Zen\\ Hei\\ Mono.ttf test/output/alphanumeric.ttf",
+    "test-cjk": "bin/cli.js test/WenQuanYi\\ Zen\\ Hei\\ Mono.ttf test/output/cjk.ttf --src test/example-src",
+    "test": "yarn test-alphanumeric && yarn test-cjk && echo && echo 'Font size report:' && du -sh test/output/*.ttf"
+  },
+  "files": [
+    "bin",
+    "lib"
+  ],
+  "dependencies": {
+    "fontmin": "^0.9.8",
+    "gulp-rename": "^1.4.0",
+    "localtime": "^1.0.2",
+    "yargs": "^14.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.4.0",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "husky": "^3.0.5",
+    "lint-staged": "^9.3.0",
+    "prettier": "^1.18.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.js": [
+      "prettier --write",
+      "eslint",
+      "git add"
+    ],
+    "**/*.{json,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}
