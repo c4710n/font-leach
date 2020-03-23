@@ -1,7 +1,7 @@
 {
   "name": "font-leach",
   "description": "Minify fonts by scanning source code.",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "license": "MIT",
   "repository": "font-leach",
   "bin": "bin/cli.js",
